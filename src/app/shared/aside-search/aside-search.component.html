@@ -1,0 +1,16 @@
+<form [formGroup]="form" class="search-aside d-flex flex-row-reverse">
+  <div class="mt-4">
+
+  <mat-form-field *ngIf="searchInput" >
+    <mat-label>Pesquisar</mat-label>
+    <input matInput type="text" formControlName="search">
+    <button (click)="searchMovie()" matSuffix mat-icon-button aria-label="search">
+      <mat-icon  aria-hidden="false" aria-label="search icon" fontIcon="search"></mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+  <button *ngIf="!searchInput" mat-button (click)="searchInput = true">
+    <mat-icon (inline)="true" aria-hidden="false" aria-label="search icon" fontIcon="search"></mat-icon>
+  </button>
+</form>
