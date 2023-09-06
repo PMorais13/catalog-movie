@@ -1,0 +1,11 @@
+<ng-container *ngFor="let item of infosCarousel">
+  <h2 class="style-text mt-4 ms-4">{{item.title}}</h2>
+  <owl-carousel-o [options]="customOptions" class="carousel">
+    <ng-container *ngFor="let slide of item.results">
+      <ng-template class="slide" carouselSlide [id]="slide.id.toString()">
+        <img [src]="'https://image.tmdb.org/t/p/w500/' + slide.backdrop_path" [alt]="slide.id.toString()"
+        [title]="slide.id.toString()">
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</ng-container>
