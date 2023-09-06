@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarouselModule } from 'ngx-owl-carousel-o';
-import { CarouselComponent } from './components/carousel/carousel.component';
+import { HomeRoutingModule } from './home.routing.module';
+import { CarouselComponentModule } from 'src/app/shared/carousel/carousel.module';
+import { MovieSpotlightModule } from 'src/app/shared/movie-spotlight/movie-spotlight.module';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    CarouselModule,
+    HomeRoutingModule,
+    CarouselComponentModule,
+    MovieSpotlightModule
   ],
-  declarations: [HomeComponent, CarouselComponent],
-  exports: [HomeComponent]
+  declarations: [HomeComponent]
 })
 export class HomeModule { }

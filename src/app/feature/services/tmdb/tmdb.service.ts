@@ -22,4 +22,9 @@ export class TmbdService {
     public getListMovies(url: string): any {
         return this.tmdbRepository.getListMovies(url);
     }
+
+    public getIdMovie(id: number): any {
+        const idFormat = id.toString();
+        return this.tmdbRepository.getIdMovie(idFormat);
+    }
 }

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { StorageService } from './../../../feature/services/storage/storage.service';
 import { debounceTime, take } from 'rxjs';
+import { ActiveRoutes } from 'src/app/enums/routes.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +10,13 @@ import { debounceTime, take } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Output() valueSeachMovie = new EventEmitter<string>(); 
-  constructor(private readonly storageService: StorageService) {}
+  @Output() valueSeachMovie = new EventEmitter<string>();
+  public routes = ActiveRoutes;
+
+  constructor(private readonly storageService: StorageService, private readonly router: Router) {
+    console.log('foi');
+    
+  }
 
   /**
    * recupera o valor da pesquisa
@@ -23,5 +30,14 @@ export class HeaderComponent {
         this.storageService.setLanguage = language;
       }
     )
+  }
+
+  /**
+   * navega para a rota do botão clicado
+   */
+  public navigate(rote: string): void {
+    console.log(rote);
+    
+    void this.router.navigate([rote])
   }
 }

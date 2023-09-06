@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+import { TmbdService } from '../../services/tmdb/tmdb.service';
+import { SpotlighInfos } from 'src/app/interfaces/spotligh-info.interface';
+import { formatUrlImg, formatUrlImgInternal } from 'src/app/shared/formatters/formatters.const';
+
+@Component({
+  selector: 'app-selected-movie',
+  templateUrl: './selected-movie.component.html',
+  styleUrls: ['./selected-movie.component.scss']
+})
+export class SelectedMovieComponent implements OnInit {
+  public spotlighInfos!: SpotlighInfos;
+  public infoMovie!: any;
+  private idMovie = 335977;
+
+  constructor(private readonly tmbdService: TmbdService) {}
+
+  /**
+   * faz a chamada para o filme selecionado
+   */
+  public ngOnInit(): void {
+    this.getSelectedInfoMovie()
+  }
+
+  /**
+   * recupera as informações do filme selecionado
+   */
+  public getSelectedInfoMovie(): void {
+    this.tmbdService.getIdMovie(this.idMovie).subscribe((data: any)=> {
+      this.infoMovie = data;
+      const infosMovie = {
+        title: data.title,
+        description: '',
+        rating: null,
+        imgUrl: 'https://image.tmdb.org/t/p/w500/' + data.backdrop_path
+      }
+      const backgroundImage = formatUrlImg(infosMovie.imgUrl);
+      const backgroundImageInternal = formatUrlImgInternal(infosMovie.imgUrl);
+      this.spotlighInfos = {
+        backgroundImage,
+        backgroundImageInternal,
+        mostPopular: infosMovie
+      }
+    });
+  }
+
+}

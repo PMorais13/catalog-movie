@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { InfoCaroucel } from 'src/app/interfaces/info-carousel.interface';
 
@@ -25,4 +25,11 @@ export class CarouselComponent {
         }
     }
   };
+
+  /**
+   * ouve o clique na imagem e seleciona o filme
+   */
+  public selectMovie(): void {
+    
+  }
 }

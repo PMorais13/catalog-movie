@@ -1,0 +1,12 @@
+section {
+  background-color: rgb(59, 59, 59);
+  color: white;
+
+  .cards {
+    justify-content: space-evenly;
+    > mat-card {
+        background-color: rgb(66 27 195 / 45%);
+      }
+  }
+  
+}

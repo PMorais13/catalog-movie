@@ -1,0 +1,9 @@
+<div *ngIf="spotlighInfos" class="popular-movie blur" [ngStyle]="{'background-image': spotlighInfos.backgroundImage}">
+  <div class="popular-movie-internal" [ngStyle]="{'background-image': spotlighInfos.backgroundImageInternal}"></div>
+  <div class="ms-4 rounded container-info style-text">
+    <h1 color="primary" class="pt-3">Catálogo de Filmes!</h1>
+    <h2>{{spotlighInfos.mostPopular.title}}</h2>
+    <h3>{{spotlighInfos.mostPopular.description}}</h3>
+    <h4 *ngIf="spotlighInfos.mostPopular.rating">Nota IMDB: {{spotlighInfos.mostPopular.rating}}</h4>
+  </div>
+</div>

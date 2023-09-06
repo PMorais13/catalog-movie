@@ -1,12 +1,4 @@
-<section *ngIf="mostPopular">
-  <div class="popular-movie blur" [ngStyle]="{'background-image': backgroundImage}">
-    <div class="popular-movie-internal" [ngStyle]="{'background-image': backgroundImageInternal}"></div>
-    <div class="ms-4 rounded container-info style-text">
-      <h1 color="primary" class="pt-3">Catálogo de Filmes!</h1>
-      <h2>{{mostPopular.title}}</h2>
-      <h3>{{mostPopular.description}}</h3>
-      <h4>Nota IMDB: {{mostPopular.rating}}</h4>
-    </div>
-  </div>
+<section *ngIf="spotlighInfos">
+  <app-movie-spotlight [spotlighInfos]="spotlighInfos"></app-movie-spotlight>
   <app-carousel [infosCarousel]="allPopular"></app-carousel>
 </section>

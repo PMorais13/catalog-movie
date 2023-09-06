@@ -4,5 +4,5 @@ export const endpoint = {
     search: ulrBase + 'search/movie',
     popular: ulrBase + 'movie/popular',
     topRated: ulrBase + 'movie/top_rated',
-    image: ulrBase + 'movie/'
+    movie: ulrBase + 'movie/'
 }
