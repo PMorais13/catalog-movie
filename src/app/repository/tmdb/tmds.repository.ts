@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, finalize } from "rxjs";
+import { Observable } from "rxjs";
 import { endpoint } from "src/app/core/settings/url";
 import { StorageService } from "src/app/feature/services/storage/storage.service";
 
@@ -41,6 +41,18 @@ export class TmdbRepository {
         this.storageService.loading = true;
         const params = this.params.set('language', this.storageService.getStaticLanguage);
         return this.http.get(url, {
+            params
+        });
+    }
+
+    /**
+     * retorna o filme específico selecionado pelo usuário
+     * @param id 
+     */
+    public getIdMovie(id: string) {
+        this.storageService.loading = true;
+        const params = this.params.set('language', this.storageService.getStaticLanguage);
+        return this.http.get(endpoint.movie + id, {
             params
         });
     }
