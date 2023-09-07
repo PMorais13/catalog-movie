@@ -12,6 +12,6 @@ export class FeatureComponent implements OnInit {
   constructor(private readonly route: Router, public readonly storageService: StorageService) {}
 
   ngOnInit(): void {
-    void this.route.navigate([ActiveRoutes.SELECT])
+    void this.route.navigate([ActiveRoutes.HOME])
   }
 }

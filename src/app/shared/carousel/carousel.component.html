@@ -3,8 +3,8 @@
   <owl-carousel-o [options]="customOptions" class="carousel">
     <ng-container *ngFor="let slide of item.results">
       <ng-template class="slide" carouselSlide [id]="slide.id.toString()">
-        <img [src]="'https://image.tmdb.org/t/p/w500/' + slide.backdrop_path" [alt]="slide.id.toString()"
-        [title]="slide.id.toString()" (click)="selectMovie()">
+        <img (click)="selectMovie(slide.id)" [src]="'https://image.tmdb.org/t/p/w500/' + slide.backdrop_path" [alt]="slide.id.toString()"
+        [title]="slide.id.toString()">
       </ng-template>
     </ng-container>
   </owl-carousel-o>
