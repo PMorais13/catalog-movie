@@ -1,15 +1,26 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
+import { TypeCollection } from "src/app/enums/tipe-collection.enum";
 
 @Injectable({
     providedIn: 'root'
 }) 
 
 export class StorageService {
+    private typeCollection = '';
     private staticLanguage = 'pt-BR';
     private language = new BehaviorSubject<string>(this.staticLanguage);
     private indexMostPopularMovie: number| null = null;
-    public loading = false
+    private idSelectedMovie: number = 0;
+    public loading = false;
+
+    public get getTypeCollection () {
+        return this.typeCollection;
+    }
+
+    public get getIdSelectedMovie () {
+        return this.idSelectedMovie;
+    }
 
     public get getLanguage () {
         return this.language
@@ -30,5 +41,13 @@ export class StorageService {
 
     public set setIndexMostPopularMovie (index: number) {
         this.indexMostPopularMovie = index;
+    }
+
+    public set setIdSelectedMovie (id: number) {
+        this.idSelectedMovie = id;
+    }
+
+    public set setTypeCollection (type: string) {
+        this.typeCollection = type;
     }
 }

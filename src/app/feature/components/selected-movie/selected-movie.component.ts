@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TmbdService } from '../../services/tmdb/tmdb.service';
 import { SpotlighInfos } from 'src/app/interfaces/spotligh-info.interface';
 import { formatUrlImg, formatUrlImgInternal } from 'src/app/shared/formatters/formatters.const';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-selected-movie',
@@ -13,7 +14,7 @@ export class SelectedMovieComponent implements OnInit {
   public infoMovie!: any;
   private idMovie = 335977;
 
-  constructor(private readonly tmbdService: TmbdService) {}
+  constructor(private readonly tmbdService: TmbdService, private readonly storageService: StorageService) {}
 
   /**
    * faz a chamada para o filme selecionado
@@ -26,7 +27,8 @@ export class SelectedMovieComponent implements OnInit {
    * recupera as informações do filme selecionado
    */
   public getSelectedInfoMovie(): void {
-    this.tmbdService.getIdMovie(this.idMovie).subscribe((data: any)=> {
+    const id = this.storageService.getIdSelectedMovie
+    this.tmbdService.getIdMovie(id).subscribe((data: any)=> {
       this.infoMovie = data;
       const infosMovie = {
         title: data.title,
