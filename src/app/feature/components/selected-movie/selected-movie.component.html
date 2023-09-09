@@ -5,37 +5,74 @@
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title>Resumo</mat-card-title>
-          <img *ngIf="infoMovie?.belongs_to_collection?.poster_path" mat-card-md-image [src]="'https://image.tmdb.org/t/p/w500/' + infoMovie?.belongs_to_collection?.backdrop_path"  alt="poster">
+          <mat-card-subtitle *ngIf="!infoMovie.overview.length" style="color: white">
+            Resumo não encontrado
+          </mat-card-subtitle>
+          <img
+            *ngIf="infoMovie?.belongs_to_collection?.poster_path"
+            mat-card-md-image
+            [src]="
+              infoMovie?.belongs_to_collection?.backdrop_path
+                ? 'https://image.tmdb.org/t/p/w500/' +
+                  infoMovie?.belongs_to_collection?.backdrop_path
+                : './../../../../assets/img/not-image.png'
+            "
+            alt="poster"
+          />
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content class="mt-2">
-        {{infoMovie.overview}}
+        {{ infoMovie.overview}}
       </mat-card-content>
     </mat-card>
     <mat-card class="example-card col-3">
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title>Avaliação</mat-card-title>
-          <mat-card-subtitle style="color: white;">IMDB: {{infoMovie.vote_average}}</mat-card-subtitle>
-          <img *ngIf="infoMovie?.belongs_to_collection?.poster_path" mat-card-md-image [src]="'https://image.tmdb.org/t/p/w500/' + infoMovie?.belongs_to_collection?.poster_path"  alt="poster da franquia">
+          <mat-card-subtitle style="color: white"
+            >IMDB: {{ infoMovie.vote_average }}</mat-card-subtitle
+          >
+          <img
+            *ngIf="infoMovie?.belongs_to_collection?.poster_path"
+            mat-card-md-image
+            [src]="
+              infoMovie?.belongs_to_collection?.backdrop_path
+                ? 'https://image.tmdb.org/t/p/w500/' +
+                  infoMovie?.belongs_to_collection?.backdrop_path
+                : './../../../../assets/img/not-image.png'
+            "
+            alt="poster da franquia"
+          />
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content class="mt-2">
-        {{infoMovie.tagline}}
+        {{ infoMovie.tagline }}
       </mat-card-content>
     </mat-card>
     <mat-card class="example-card col-3">
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title>Proprietário</mat-card-title>
-          <mat-card-subtitle style="color: white;">{{infoMovie.production_companies[0].name}}</mat-card-subtitle>
-          <img *ngIf="infoMovie?.belongs_to_collection?.poster_path" mat-card-md-image [src]="'https://image.tmdb.org/t/p/w500/' + infoMovie?.production_companies[0]?.logo_path"  alt="logo da empresa">
+          <mat-card-subtitle style="color: white">{{
+            infoMovie.production_companies[0].name
+          }}</mat-card-subtitle>
+          <img
+            *ngIf="infoMovie?.belongs_to_collection?.poster_path"
+            mat-card-md-image
+            [src]="
+              infoMovie?.belongs_to_collection?.backdrop_path
+                ? 'https://image.tmdb.org/t/p/w500/' +
+                  infoMovie?.belongs_to_collection?.backdrop_path
+                : './../../../../assets/img/not-image.png'
+            "
+            alt="logo da empresa"
+          />
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content class="mt-2">
         <h4>Gêneros:</h4>
         <ng-container *ngFor="let genre of infoMovie.genres">
-          <p>{{genre.name}}</p>
+          <p>{{ genre.name }}</p>
         </ng-container>
       </mat-card-content>
     </mat-card>

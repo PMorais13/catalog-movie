@@ -1,3 +1,4 @@
-<p>
-  movie-collection works!
-</p>
+<section *ngIf="isLoaded">
+  <h2 class="pt-4 ps-4">Seleção de {{title}}</h2>
+  <app-carousel *ngFor="let collection of allCollection" [infosCarousel]="collection"></app-carousel>
+</section>

@@ -1,6 +1,6 @@
-export class TypeCollection {
-    SEARCH = 'search';
-    FILME = 'film';
-    SERIES = 'series';
-    DEFAULT = 'default';
+export enum TypeCollection {
+    SEARCH = 'search',
+    MOVIE = 'movie',
+    SERIE = 'tv',
+    DEFAULT = 'default',
 }

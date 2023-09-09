@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { TmdbRepository } from "../../../repository/tmdb/tmds.repository";
+import { StorageService } from "../storage/storage.service";
 
 @Injectable({
     providedIn: 'root'
@@ -7,7 +8,7 @@ import { TmdbRepository } from "../../../repository/tmdb/tmds.repository";
 
 export class TmbdService {
 
-    constructor(private readonly tmdbRepository: TmdbRepository){}
+    constructor(private readonly tmdbRepository: TmdbRepository, private readonly storageService: StorageService){}
 
     /**
      * procura o filme pesquisado
@@ -25,6 +26,16 @@ export class TmbdService {
 
     public getIdMovie(id: number): any {
         const idFormat = id.toString();
-        return this.tmdbRepository.getIdMovie(idFormat);
+        const type = this.storageService.getTypeCollection;
+        return this.tmdbRepository.getIdMovie(idFormat, type);
+    }
+
+    /**
+     * busca a lista de filmes pelo genero
+     * @param genre genero dos filmes
+     */
+    public getMoviesWithGenres(genre?: string): any {
+        const type = this.storageService.getTypeCollection;
+        return this.tmdbRepository.getMoviesWithGenres(genre, type);
     }
 }

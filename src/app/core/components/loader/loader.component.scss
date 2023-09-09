@@ -1,0 +1,19 @@
+:host {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(183, 183, 183, 0.8588235294);
+    z-index: 10;
+
+    :first-child {
+        margin: auto;
+        margin-top: 200px;
+        width: 235px!important;
+        height: 235px!important;
+    }
+
+    :last-child {
+        text-align: center;
+    }
+}

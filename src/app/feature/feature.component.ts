@@ -11,7 +11,10 @@ import { ActiveRoutes } from '../enums/routes.enum';
 export class FeatureComponent implements OnInit {
   constructor(private readonly route: Router, public readonly storageService: StorageService) {}
 
-  ngOnInit(): void {
+  /**
+   * manda para a rota inicial
+   */
+  public ngOnInit(): void {
     void this.route.navigate([ActiveRoutes.HOME])
   }
 }

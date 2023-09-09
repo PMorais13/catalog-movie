@@ -1,5 +1,6 @@
 export enum ActiveRoutes {
     HOME = 'home',
     SEARCH = 'search',
-    SELECT = 'select'
+    SELECT = 'select',
+    COLLECTION = 'collection'
 }
