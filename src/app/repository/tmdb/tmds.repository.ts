@@ -22,7 +22,7 @@ export class TmdbRepository {
    * @returns
    */
   public searchMovie(id: string): Observable<any> {
-    const url = `${endpoint.search}?query=${id}`;
+    const url = `${endpoint.search}?query=${id}&include_adult=false`;
     return this.http.get(url);
   }
 

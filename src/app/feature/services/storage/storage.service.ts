@@ -13,7 +13,12 @@ export class StorageService {
     private indexMostPopularMovie: number| null = null;
     private idSelectedMovie: number = 0;
     private search = '';
+    private pagination = 1;
     
+    public get getPagination () {
+        return this.pagination;
+    }
+
     public get getSearch () {
         return this.search;
     }
@@ -57,5 +62,9 @@ export class StorageService {
 
     public set setSearch (search: string) {
         this.search = search;
+    }
+
+    public set setPagination (page: number) {
+        this.pagination = page;
     }
 }

@@ -15,6 +15,6 @@ export class FeatureComponent implements OnInit {
    * manda para a rota inicial
    */
   public ngOnInit(): void {
-    void this.route.navigate([ActiveRoutes.HOME])
+    void this.route.navigate([ActiveRoutes.SEARCH])
   }
 }
