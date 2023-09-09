@@ -30,7 +30,7 @@ export class InterceptorHttpRequest implements HttpInterceptor {
     
     return next.handle(reqClone).pipe(
       finalize(() => {
-        // this.loaderService.loadCompleted();
+        this.loaderService.loadCompleted();
       })
     );
   }
