@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SpotlighInfos } from 'src/app/interfaces/spotligh-info.interface';
 
 
@@ -7,10 +7,6 @@ import { SpotlighInfos } from 'src/app/interfaces/spotligh-info.interface';
   templateUrl: './movie-spotlight.component.html',
   styleUrls: ['./movie-spotlight.component.scss']
 })
-export class MovieSpotlightComponent implements OnInit {
+export class MovieSpotlightComponent {
   @Input() public spotlighInfos!: SpotlighInfos;
-
-  ngOnInit() {
-    console.log('spot', this.spotlighInfos);
-  }
 }
