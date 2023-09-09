@@ -3,6 +3,7 @@ import { StorageService } from './../../../feature/services/storage/storage.serv
 import { debounceTime, take } from 'rxjs';
 import { ActiveRoutes } from 'src/app/enums/routes.enum';
 import { Router } from '@angular/router';
+import { TypeCollection } from 'src/app/enums/tipe-collection.enum';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   @Output() valueSeachMovie = new EventEmitter<string>();
   public routes = ActiveRoutes;
+  public typeCollection = TypeCollection;
 
   constructor(private readonly storageService: StorageService, private readonly router: Router) {
     console.log('foi');
@@ -35,9 +37,17 @@ export class HeaderComponent {
   /**
    * navega para a rota do botão clicado
    */
-  public navigate(rote: string): void {
-    console.log(rote);
-    
-    void this.router.navigate([rote])
+  public navigate(rote: string, type?: TypeCollection): void {
+    if (type) {
+      this.storageService.setTypeCollection = type;
+    }
+    if (rote === ActiveRoutes.COLLECTION) {
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([rote]);
+    });
+    } else {
+      void this.router.navigate([rote]);
+
+    }
   }
 }

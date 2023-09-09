@@ -12,7 +12,6 @@ import { StorageService } from '../../services/storage/storage.service';
 export class SelectedMovieComponent implements OnInit {
   public spotlighInfos!: SpotlighInfos;
   public infoMovie!: any;
-  private idMovie = 335977;
 
   constructor(private readonly tmbdService: TmbdService, private readonly storageService: StorageService) {}
 
@@ -31,10 +30,10 @@ export class SelectedMovieComponent implements OnInit {
     this.tmbdService.getIdMovie(id).subscribe((data: any)=> {
       this.infoMovie = data;
       const infosMovie = {
-        title: data.title,
+        title: data.title ?? data.name,
         description: '',
         rating: null,
-        imgUrl: 'https://image.tmdb.org/t/p/w500/' + data.backdrop_path
+        imgUrl: data.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + data.backdrop_path : './../../../assets/img/not-image.png'
       }
       const backgroundImage = formatUrlImg(infosMovie.imgUrl);
       const backgroundImageInternal = formatUrlImgInternal(infosMovie.imgUrl);

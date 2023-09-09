@@ -1,4 +1,4 @@
 <section *ngIf="spotlighInfos">
   <app-movie-spotlight [spotlighInfos]="spotlighInfos"></app-movie-spotlight>
-  <app-carousel [infosCarousel]="allPopular"></app-carousel>
+  <app-carousel *ngFor="let collection of allPopular" [infosCarousel]="collection"></app-carousel>
 </section>

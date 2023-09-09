@@ -7,13 +7,12 @@ import { TypeCollection } from "src/app/enums/tipe-collection.enum";
 }) 
 
 export class StorageService {
-    private typeCollection = '';
+    private typeCollection =  TypeCollection.MOVIE;
     private staticLanguage = 'pt-BR';
     private language = new BehaviorSubject<string>(this.staticLanguage);
     private indexMostPopularMovie: number| null = null;
     private idSelectedMovie: number = 0;
-    public loading = false;
-
+    
     public get getTypeCollection () {
         return this.typeCollection;
     }
@@ -47,7 +46,7 @@ export class StorageService {
         this.idSelectedMovie = id;
     }
 
-    public set setTypeCollection (type: string) {
+    public set setTypeCollection (type: TypeCollection) {
         this.typeCollection = type;
     }
 }

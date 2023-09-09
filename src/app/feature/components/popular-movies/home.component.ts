@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { TmbdService } from '../../services/tmdb/tmdb.service';
 import { MostPopular } from 'src/app/interfaces/most-popular.interface';
 import { AllMovies } from 'src/app/interfaces/all-movies.interface';
@@ -54,6 +54,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
       .getListMovies(url)
       .pipe(take(1))
       .subscribe((data: AllMovies) => {
+        if (!data.results) return;
         this.allPopular.push(this.formatInfoCarousel(data));
       });
   }
@@ -67,6 +68,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
       .getListMovies(url)
       .pipe(take(1))
       .subscribe((data: AllMovies) => {
+        if (!data.results) return;
         const topRated = {
           title: 'Mais votados!',
           results: data.results,
@@ -96,7 +98,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
     this.storageService.setIndexMostPopularMovie = index;
     const result = data.results[index];
     const mostPopular = {
-      imgUrl: 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path,
+      imgUrl: result.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path : './../../../assets/img/not-image.png',
       title: result.title,
       description: result.overview.length
         ? result.overview
