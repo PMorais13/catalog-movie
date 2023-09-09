@@ -12,7 +12,12 @@ export class StorageService {
     private language = new BehaviorSubject<string>(this.staticLanguage);
     private indexMostPopularMovie: number| null = null;
     private idSelectedMovie: number = 0;
+    private search = '';
     
+    public get getSearch () {
+        return this.search;
+    }
+
     public get getTypeCollection () {
         return this.typeCollection;
     }
@@ -48,5 +53,9 @@ export class StorageService {
 
     public set setTypeCollection (type: TypeCollection) {
         this.typeCollection = type;
+    }
+
+    public set setSearch (search: string) {
+        this.search = search;
     }
 }

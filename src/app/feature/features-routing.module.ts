@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/popular-movies/home.component';
 import { ActiveRoutes } from '../enums/routes.enum';
-import { SelectedMovieComponent } from './components/selected-movie/selected-movie.component';
-import { MovieCollectionComponent } from './components/movie-collection/movie-collection.component';
+import { FeatureComponent } from './feature.component';
 
 const routes: Routes = [
   {
@@ -11,22 +9,26 @@ const routes: Routes = [
     children: [
       {
           path: ActiveRoutes.HOME,
-          component: HomeComponent,
+          loadChildren: () => import ('./components/popular-movies/home.module').then(m => m.HomeModule)
       },
       {
           path: ActiveRoutes.SELECT,
-          component: SelectedMovieComponent,
+          loadChildren: () => import ('./components/selected-movie/selected-movie.module').then(m => m.SelectedMovieModule)
       },
       {
           path: ActiveRoutes.COLLECTION,
-          component: MovieCollectionComponent,
+          loadChildren: () => import ('./components/movie-collection/movie-collection.module').then(m => m.MovieCollectionModule)
+      },
+      {
+        path: ActiveRoutes.SEARCH,
+        loadChildren: () => import ('./components/search-result/search-result.module').then(m => m.SearchResultModule)
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class FeaturesRoutingModule { }
