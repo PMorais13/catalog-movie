@@ -15,10 +15,7 @@ export class HeaderComponent {
   public routes = ActiveRoutes;
   public typeCollection = TypeCollection;
 
-  constructor(private readonly storageService: StorageService, private readonly router: Router) {
-    console.log('foi');
-    
-  }
+  constructor(private readonly storageService: StorageService, private readonly router: Router) { }
 
   /**
    * recupera o valor da pesquisa
