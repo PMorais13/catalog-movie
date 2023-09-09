@@ -2,13 +2,11 @@
   <h2 class="style-text mt-4 ms-4">{{item.title}}</h2>
   <owl-carousel-o [options]="customOptions" class="carousel">
     <ng-container *ngFor="let slide of item.results">
-
       <ng-template #refCarousel carouselSlide [id]="slide.id.toString()">
           <img [src]="slide.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + slide.backdrop_path : './../../../assets/img/not-image.png'" [alt]="slide.id.toString()"
           [title]="slide.id.toString()">
-          <div (click)="selectMovie(slide.id)">{{slide.title}}</div>
+          <div (click)="selectMovie(slide.id)">{{slide.title ? slide.title : slide.name}}</div>
       </ng-template>
-
     </ng-container>
   </owl-carousel-o>
 </ng-container>

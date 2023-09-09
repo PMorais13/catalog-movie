@@ -10,11 +10,7 @@ import { SpotlighInfos } from 'src/app/interfaces/spotligh-info.interface';
 export class MovieSpotlightComponent implements OnInit {
   @Input() public spotlighInfos!: SpotlighInfos;
 
-  constructor() { }
-
   ngOnInit() {
-    console.log(this.spotlighInfos);
-    
+    console.log('spot', this.spotlighInfos);
   }
-
 }

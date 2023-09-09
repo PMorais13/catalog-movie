@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeatureModule } from './feature/feature.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorHttpRequest } from './core/services/interceptor-http/interceptor-http.service';
-import { LoaderModule } from './core/components/loader/loader.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { LoaderModule } from './core/components/loader/loader.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     FeatureModule,
-    LoaderModule
   ],
   providers: [
     {

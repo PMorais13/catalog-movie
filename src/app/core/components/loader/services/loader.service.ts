@@ -36,7 +36,7 @@ export class LoaderService {
    */
   public loadStarted(): void {
     LoaderService.loading++;
-    this._checkLoading();
+    this.checkLoading();
   }
 
   /**
@@ -47,26 +47,26 @@ export class LoaderService {
       LoaderService.loading--;
     }
 
-    this._checkLoading();
+    this.checkLoading();
   }
 
   /**
    * checagem do loader
    */
-  private _checkLoading(): void {
+  private checkLoading(): void {
     if (LoaderService.loading) {
       this.$isLoading.next(true);
-      setTimeout(() => this._createLoaderComponent(), 150);
+      setTimeout(() => this.createLoaderComponent(), 150);
     } else {
+      setTimeout(() => this.destroyLoaderComponent(), 150);
       this.$isLoading.next(false);
-      setTimeout(() => this._destroyLoaderComponent(), 150);
     }
   }
 
   /**
    * cria o componente de loader no dom
    */
-  private _createLoaderComponent(): void {
+  private createLoaderComponent(): void {
     if (LoaderService.loaderComponentRef || !LoaderService.loading) {
       return;
     }
@@ -85,7 +85,7 @@ export class LoaderService {
   /**
    * remove o componente do dom
    */
-  private _destroyLoaderComponent(): void {
+  private destroyLoaderComponent(): void {
     if (!LoaderService.loaderComponentRef || LoaderService.loading) {
       return;
     }

@@ -6,6 +6,7 @@ export interface AllMovies {
 }
 
 export interface Result {
+    name?: string;
     adult: boolean;
     backdrop_path: string,
     genre_ids: Array<number>,

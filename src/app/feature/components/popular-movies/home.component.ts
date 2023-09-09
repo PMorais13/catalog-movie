@@ -99,7 +99,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
     const result = data.results[index];
     const mostPopular = {
       imgUrl: result.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path : './../../../assets/img/not-image.png',
-      title: result.title,
+      title: result.title ?? result.name,
       description: result.overview.length
         ? result.overview
         : 'Descrição não encontrada',

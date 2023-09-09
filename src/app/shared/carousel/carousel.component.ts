@@ -50,8 +50,6 @@ export class CarouselComponent extends BaseComponent implements AfterViewInit {
    * inicia o observable no carousel após o carregamento dele
    */
   public ngAfterViewInit(): void {
-    console.log(this.infosCarousel);
-    
       this.dragCarousel.dragging.pipe(takeUntil(this.onDestroy)).subscribe(() => {
         this._grabbing = true;
       })
