@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { endpoint, ulrBase } from 'src/app/core/settings/url';
-import { StorageService } from 'src/app/feature/services/storage/storage.service';
 import { TypeCollection } from 'src/app/enums/tipe-collection.enum';
 
 @Injectable({

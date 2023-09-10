@@ -41,7 +41,7 @@ export class InterceptorHttpRequest implements HttpInterceptor {
     );
   }
 
-  private adjustParamRequest(req: any): HttpRequest<any> {
+  private adjustParamRequest(req:  HttpRequest<any>): HttpRequest<any> {
     return req.clone({
       setParams: {
         page: this.storageService.getPagination.toString(),
