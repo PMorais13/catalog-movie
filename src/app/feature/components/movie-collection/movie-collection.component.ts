@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../services/storage/storage.service';
 import { InfoCaroucel } from 'src/app/interfaces/info-carousel.interface';
 import { TmbdService } from '../../services/tmdb/tmdb.service';
-import { Observable, finalize, forkJoin, take } from 'rxjs';
+import { Observable, forkJoin, take } from 'rxjs';
 import { GENRES } from 'src/app/shared/consts/genres.const';
 import { TypeCollection } from 'src/app/enums/tipe-collection.enum';
 import { LoaderService } from 'src/app/core/components/loader/services/loader.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-collection',
@@ -15,8 +16,11 @@ import { LoaderService } from 'src/app/core/components/loader/services/loader.se
 export class MovieCollectionComponent implements OnInit {
   public allCollection: Array<InfoCaroucel> = [];
   public title: string;
+  public genrers = new FormControl(['']);
+  public genrerList: Array<string> = [];
   public isLoaded = false;
   private isMovie: boolean;
+  private collectionOrigin: Array<InfoCaroucel> = [];
 
   constructor(
     private readonly storageService: StorageService,
@@ -26,6 +30,9 @@ export class MovieCollectionComponent implements OnInit {
     this.isMovie =
       this.storageService.getTypeCollection === TypeCollection.MOVIE;
     this.title = this.isMovie ? 'filmes' : 'séries';
+    GENRES.map((genre) => {
+      this.genrerList.push(genre.name);
+    });
   }
 
   /**
@@ -33,6 +40,7 @@ export class MovieCollectionComponent implements OnInit {
    */
   public ngOnInit() {
     this.cachedList();
+    this.controlFilter();
   }
 
   private getMoviesWithGenres(): void {
@@ -65,6 +73,7 @@ export class MovieCollectionComponent implements OnInit {
         this.isLoaded = true;
       }
     });
+    this.collectionOrigin = this.allCollection;
   }
 
   /**
@@ -83,5 +92,20 @@ export class MovieCollectionComponent implements OnInit {
     } else {
       this.getMoviesWithGenres();
     }
+  }
+
+  /**
+   * controla o filtro de generos
+   */
+  private controlFilter(): void {
+    this.genrers.valueChanges.pipe().subscribe((data: Array<string> | null) => {
+      if (!data?.length) {
+        this.allCollection = this.collectionOrigin;
+
+        return;
+      }
+      this.allCollection = [];
+      this.allCollection = this.collectionOrigin.filter((item) => data.includes(item.title));
+    })
   }
 }
