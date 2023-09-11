@@ -7,7 +7,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 
 import { AsideSearchModule } from 'src/app/shared/aside-search/aside-search.module';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     AsideSearchModule,
-    HttpClientModule,
     MatMenuModule,
     RouterModule
   ],

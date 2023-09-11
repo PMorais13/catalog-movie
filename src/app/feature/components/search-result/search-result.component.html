@@ -1,0 +1,18 @@
+<section *ngIf="results.results">
+  <div class="container">
+    <h2 class="pt-4 ps-4">Resultado da pesquisa:</h2>
+    <div class="card-group">
+      <h3 *ngIf="!results.results.length">Nenhum resultado encontrado</h3>
+      <div *ngFor="let result of results.results" class="selected-card" (click)="selectMovie(result.id)">
+        <img [src]="result.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path : './../../../assets/img/not-image.png'" />
+        <div>{{result.title}}</div>
+      </div>
+    </div>
+  </div>
+  <mat-paginator [color]="'primary'"
+       [length]="results.total_results"
+              [pageSize]="results.results.length"
+              (page)="handlePageEvent($event)"
+              aria-label="Select page">
+</mat-paginator>
+</section>

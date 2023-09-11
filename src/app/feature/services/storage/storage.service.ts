@@ -12,7 +12,32 @@ export class StorageService {
     private language = new BehaviorSubject<string>(this.staticLanguage);
     private indexMostPopularMovie: number| null = null;
     private idSelectedMovie: number = 0;
+    private search = '';
+    private pagination = 1;
+    private requestFirstPage = [];
+    private moviesCache = [];
+    private seriesCache = [];
+
+    public get getSeriesCache () {
+        return this.seriesCache;
+    }
+
+    public get getMoviesCache () {
+        return this.moviesCache;
+    }
+
+    public get getRequestFirstPage () {
+        return this.requestFirstPage;
+    }
     
+    public get getPagination () {
+        return this.pagination;
+    }
+
+    public get getSearch () {
+        return this.search;
+    }
+
     public get getTypeCollection () {
         return this.typeCollection;
     }
@@ -48,5 +73,25 @@ export class StorageService {
 
     public set setTypeCollection (type: TypeCollection) {
         this.typeCollection = type;
+    }
+
+    public set setSearch (search: string) {
+        this.search = search;
+    }
+
+    public set setPagination (page: number) {
+        this.pagination = page;
+    }
+
+    public set setRequestFirstPage (requests: any) {
+        this.requestFirstPage = requests;
+    }
+
+    public set setMoviesCache (moviesCache: any) {
+        this.moviesCache = moviesCache;
+    }
+
+    public set setSeriesCache (seriesCache: any) {
+        this.seriesCache = seriesCache;
     }
 }

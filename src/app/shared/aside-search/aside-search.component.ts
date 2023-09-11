@@ -27,10 +27,11 @@ export class AsideSearchComponent implements OnInit {
    * busca o filme pesquisado
    */
   public searchMovie(): void {
-    if (!this.form) {
+    if (!this.form.controls['search'].value) {
       return;
     }
-    this.valueSeachMovie.emit(this.form.controls['search'].value)
+    this.valueSeachMovie.emit(this.form.controls['search'].value);
+    this.form.controls['search'].setValue('');
   }
 
 }

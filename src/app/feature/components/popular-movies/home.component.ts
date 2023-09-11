@@ -1,12 +1,20 @@
-import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TmbdService } from '../../services/tmdb/tmdb.service';
-import { MostPopular } from 'src/app/interfaces/most-popular.interface';
 import { AllMovies } from 'src/app/interfaces/all-movies.interface';
 import { endpoint } from 'src/app/core/settings/url';
 import { InfoCaroucel } from 'src/app/interfaces/info-carousel.interface';
 import { StorageService } from '../../services/storage/storage.service';
 import { BaseComponent } from 'src/app/core/components/base/base.component';
-import { Subscription, skip, take, takeUntil } from 'rxjs';
+import {
+  Observable,
+  Subscription,
+  delay,
+  forkJoin,
+  interval,
+  skip,
+  take,
+  takeUntil
+} from 'rxjs';
 import { SpotlighInfos } from 'src/app/interfaces/spotligh-info.interface';
 import {
   formatUrlImg,
@@ -37,44 +45,27 @@ export class HomeComponent extends BaseComponent implements OnInit {
   /**
    * inicia o componente fazendo a chamada para recuperar a lista de filmes populares
    */
-  ngOnInit() {
+  public ngOnInit() {
     this.subscriptionLanguage?.unsubscribe();
     this.allPopular = [];
-    this.getListPopularMovies();
-    this.getListTopRated();
+    this.getRequests();
     this.observableLanguage();
   }
 
   /**
    * recupera a lista de filmes populares
    */
-  private getListPopularMovies(): void {
+  private getListPopularMovies(): Observable<any> {
     const url = endpoint.popular;
-    this.tmbdService
-      .getListMovies(url)
-      .pipe(take(1))
-      .subscribe((data: AllMovies) => {
-        if (!data.results) return;
-        this.allPopular.push(this.formatInfoCarousel(data));
-      });
+    return this.tmbdService.getListMovies(url).pipe(delay(1000));
   }
 
   /**
    * recupera a lista de filmes mais votados
    */
-  private getListTopRated(): void {
+  private getListTopRated(): Observable<any> {
     const url = endpoint.topRated;
-    this.tmbdService
-      .getListMovies(url)
-      .pipe(take(1))
-      .subscribe((data: AllMovies) => {
-        if (!data.results) return;
-        const topRated = {
-          title: 'Mais votados!',
-          results: data.results,
-        };
-        this.allPopular.push(topRated);
-      });
+    return this.tmbdService.getListMovies(url);
   }
 
   /**
@@ -88,17 +79,40 @@ export class HomeComponent extends BaseComponent implements OnInit {
       });
   }
 
+  private getRequests(): void {
+    const requestsFirstPage = this.storageService.getRequestFirstPage;
+    if (requestsFirstPage.length) {
+      this.formatTopRated(requestsFirstPage[0]);
+      this.formatInfoCarousel(requestsFirstPage[1]);
+    } else {
+      forkJoin([this.getListPopularMovies(), this.getListTopRated()]).pipe(take(1)).subscribe(
+        (data) => {
+          if (requestsFirstPage.length) {
+            this.formatTopRated(requestsFirstPage[0]);
+            this.formatInfoCarousel(requestsFirstPage[1]);
+          } else {
+            this.formatTopRated(data[0]);
+            this.formatInfoCarousel(data[1]);
+            this.storageService.setRequestFirstPage = data;
+          }
+        }
+      );
+    }
+  }
+
   /**
    * formata as informações que serão enviadas ao carousel
    */
-  private formatInfoCarousel(data: AllMovies): InfoCaroucel {
+  private formatInfoCarousel(data: AllMovies): void {
     const index =
       this.storageService.getIndexMostPopularMovie ??
       Math.round(Math.random() * (19 - 0) + 0);
     this.storageService.setIndexMostPopularMovie = index;
     const result = data.results[index];
     const mostPopular = {
-      imgUrl: result.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path : './../../../assets/img/not-image.png',
+      imgUrl: result.backdrop_path
+        ? 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path
+        : './../../../assets/img/not-image.png',
       title: result.title ?? result.name,
       description: result.overview.length
         ? result.overview
@@ -112,9 +126,17 @@ export class HomeComponent extends BaseComponent implements OnInit {
       backgroundImageInternal,
       mostPopular,
     };
-    return {
+    this.allPopular.push({
       title: 'Mais populares!',
       results: data.results,
+    })
+  }
+
+  private formatTopRated(data: AllMovies): void {
+    const topRated = {
+      title: 'Mais votados!',
+      results: data.results,
     };
+    this.allPopular.push(topRated);
   }
 }
