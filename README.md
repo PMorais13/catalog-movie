@@ -13,4 +13,4 @@ Este projeto é um aplicativo web criado com Angular que utiliza a API do TMDB (
 - Pesquisa por genero de filmes e séries.
 
 Você pode conferir o projeto clicando no link abaixo:
-
+https://moviecatalog.surge.sh/home
