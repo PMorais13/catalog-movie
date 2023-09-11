@@ -12,5 +12,5 @@ Este projeto é um aplicativo web criado com Angular que utiliza a API do TMDB (
 - Listagem dos filmes mais votados.
 - Pesquisa por genero de filmes e séries.
 
-Você pode conferir o projeto clicando no link abaixo:
+Você pode conferir o projeto clicando no link:
 https://moviecatalog.surge.sh/home
