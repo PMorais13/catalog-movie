@@ -42,6 +42,9 @@ export class ErrorHandlerService extends BaseComponent{
     });
   }
 
+  /**
+   * cria o modal de erro no dom
+   */
   public createErrorHandler(): void {
     this.renderer.setStyle(this.document?.body, 'overflow-y', 'hidden');
     const errorHandlerComponentRef =
