@@ -41,6 +41,11 @@ export class InterceptorHttpRequest implements HttpInterceptor {
     );
   }
 
+  /**
+   * ajusta as propriedades do objeto automatizando a appkey e language
+   * 
+   * @returns objeto que fara a requisição
+   */
   private adjustParamRequest(req:  HttpRequest<any>): HttpRequest<any> {
     return req.clone({
       setParams: {
