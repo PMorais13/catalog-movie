@@ -27,6 +27,7 @@ export class TmbdService {
     public getIdMovie(id: number): any {
         const idFormat = id.toString();
         const type = this.storageService.getTypeCollection;
+
         return this.tmdbRepository.getIdMovie(idFormat, type);
     }
 

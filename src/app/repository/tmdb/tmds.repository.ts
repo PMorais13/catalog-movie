@@ -38,7 +38,7 @@ export class TmdbRepository {
    * @param id
    */
   public getIdMovie(id: string, type: TypeCollection) {
-    const url = `${ulrBase}/${type}/${id}`;
+    const url = `${ulrBase}${type}/${id}`;
     return this.http.get(url);
   }
 
