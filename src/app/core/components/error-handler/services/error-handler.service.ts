@@ -66,7 +66,7 @@ export class ErrorHandlerService extends BaseComponent{
    */
   public destroyErrorHandlerComponent(): void {
     if (!ErrorHandlerService.errorHandlerComponentRef) return;
-    this.renderer.removeStyle(this.document?.body, 'overflow');
+    this.renderer.removeStyle(this.document?.body, 'overflow-y');
     ErrorHandlerService.errorHandlerComponentRef.destroy();
     this.applicationRef.detachView(
       ErrorHandlerService.errorHandlerComponentRef.hostView
