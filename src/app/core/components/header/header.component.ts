@@ -21,7 +21,7 @@ export class HeaderComponent {
   ) {}
 
   /**
-   * recupera o valor da pesquisa
+   * altera o idioma da aplicação
    */
   public setLanguage(language: string) {
     this.storageService.getLanguage
