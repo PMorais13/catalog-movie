@@ -18,7 +18,7 @@ const loaderServiceStub = {
   loadCompleted: () => {},
 };
 
-fdescribe('MovieCollectionComponent', () => {
+describe('MovieCollectionComponent', () => {
   let component: MovieCollectionComponent;
   let fixture: ComponentFixture<MovieCollectionComponent>;
   let storageService: StorageService;
