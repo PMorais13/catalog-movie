@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TmbdService } from '../../services/tmdb/tmdb.service';
 import { AllMovies } from 'src/app/interfaces/all-movies.interface';
 import { endpoint } from 'src/app/core/settings/url';
-import { InfoCaroucel } from 'src/app/interfaces/info-carousel.interface';
+import { InfoCarousel } from 'src/app/interfaces/info-carousel.interface';
 import { StorageService } from '../../services/storage/storage.service';
 import { BaseComponent } from 'src/app/core/components/base/base.component';
 import {
@@ -27,7 +27,7 @@ import {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent extends BaseComponent implements OnInit {
-  public allPopular: Array<InfoCaroucel> = [];
+  public allPopular: Array<InfoCarousel> = [];
   public subscriptionLanguage!: Subscription;
   public spotlighInfos!: SpotlighInfos;
 

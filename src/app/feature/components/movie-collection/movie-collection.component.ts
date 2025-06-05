@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../services/storage/storage.service';
-import { InfoCaroucel } from 'src/app/interfaces/info-carousel.interface';
+import { InfoCarousel } from 'src/app/interfaces/info-carousel.interface';
 import { TmbdService } from '../../services/tmdb/tmdb.service';
 import { Observable, forkJoin, take } from 'rxjs';
 import { GENRES } from 'src/app/shared/consts/genres.const';
@@ -14,13 +14,13 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./movie-collection.component.scss'],
 })
 export class MovieCollectionComponent implements OnInit {
-  public allCollection: Array<InfoCaroucel> = [];
+  public allCollection: Array<InfoCarousel> = [];
   public title: string;
   public genrers = new FormControl(['']);
   public genrerList: Array<string> = [];
   public isLoaded = false;
   private isMovie: boolean;
-  private collectionOrigin: Array<InfoCaroucel> = [];
+  private collectionOrigin: Array<InfoCarousel> = [];
 
   constructor(
     private readonly storageService: StorageService,

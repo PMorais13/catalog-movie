@@ -1,6 +1,6 @@
 import { Result } from "./all-movies.interface";
 
-export interface InfoCaroucel {
+export interface InfoCarousel {
     title: string;
     results: Array<Result>
 }

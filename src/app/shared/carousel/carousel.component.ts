@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/core/components/base/base.component';
 import { ActiveRoutes } from 'src/app/enums/routes.enum';
 import { StorageService } from 'src/app/feature/services/storage/storage.service';
-import { InfoCaroucel } from 'src/app/interfaces/info-carousel.interface';
+import { InfoCarousel } from 'src/app/interfaces/info-carousel.interface';
 
 @Component({
   selector: 'app-carousel',
@@ -19,7 +19,7 @@ import { InfoCaroucel } from 'src/app/interfaces/info-carousel.interface';
 })
 export class CarouselComponent extends BaseComponent implements AfterViewInit {
   @ViewChild(Carousel) public dragCarousel!: Carousel;
-  @Input({required: true}) public infosCarousel!: InfoCaroucel;
+  @Input({required: true}) public infosCarousel!: InfoCarousel;
   public customOptions: OwlOptions = {
     loop: true,
     autoHeight: true,
