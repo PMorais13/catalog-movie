@@ -47,12 +47,11 @@ export class InterceptorHttpRequest implements HttpInterceptor {
    * @returns objeto que fara a requisição
    */
   private adjustParamRequest(req:  HttpRequest<any>): HttpRequest<any> {
-    return req.clone({
-      setParams: {
-        page: this.storageService.getPagination.toString(),
-        api_key: 'c555adc36b44e965cef4567502b1614c',
-        language: this.storageService.getStaticLanguage,
-      }
-    });
+    let params = req.params
+      .set('page', this.storageService.getPagination.toString())
+      .set('api_key', 'c555adc36b44e965cef4567502b1614c')
+      .set('language', this.storageService.getStaticLanguage);
+
+    return req.clone({ params });
   }
 }
