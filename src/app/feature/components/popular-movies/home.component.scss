@@ -1,3 +1,8 @@
 section {
     background-color: rgb(59, 59, 59);
 }
+
+.card-group {
+    display: flex;
+    background-color: var(--background-color);
+}

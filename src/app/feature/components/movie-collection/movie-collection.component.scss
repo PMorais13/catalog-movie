@@ -1,7 +1,11 @@
 section {
-    background-color: rgb(59, 59, 59);
+    background-color: var(--background-color);
 
     mat-form-field{
       width: 500px;
     }
+}
+
+.card-group {
+    display: flex;
 }

@@ -1,4 +1,4 @@
-<section *ngIf="results.results">
+<section>
   <div class="container">
     <h2 class="pt-4 ps-4">Resultado da pesquisa:</h2>
     <div class="card-group">
@@ -12,10 +12,10 @@
       </div>
     </div>
   </div>
-  <mat-paginator [color]="'primary'"
+  <mat-paginator *ngIf="results.results" [color]="'primary'"
        [length]="results.total_results"
               [pageSize]="results.results.length"
               (page)="handlePageEvent($event)"
               aria-label="Select page">
-</mat-paginator>
+  </mat-paginator>
 </section>

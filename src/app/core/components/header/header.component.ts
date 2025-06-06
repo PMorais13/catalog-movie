@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ThemeService } from '../../services/theme/theme.service';
 import { StorageService } from './../../../feature/services/storage/storage.service';
 import { debounceTime, take } from 'rxjs';
 import { ActiveRoutes } from 'src/app/enums/routes.enum';
@@ -17,7 +18,8 @@ export class HeaderComponent {
 
   constructor(
     private readonly storageService: StorageService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly themeService: ThemeService
   ) {}
 
   /**
@@ -48,6 +50,10 @@ export class HeaderComponent {
     } else {
       void this.router.navigate([route]);
     }
+  }
+
+  public toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 
   /**

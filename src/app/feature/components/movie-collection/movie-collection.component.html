@@ -1,4 +1,4 @@
-<section *ngIf="isLoaded">
+<section>
   <form>
     <h2 class="pt-4 ps-4">Seleção de {{title}}</h2>
     <mat-form-field>
@@ -14,7 +14,17 @@
       </mat-select>
     </mat-form-field>
   </form>
-  <ng-container *ngFor="let collection of allCollection">
-    <app-carousel  [infosCarousel]="collection"></app-carousel>
+  <ng-container *ngIf="isLoaded; else skeletonCarousel">
+    <ng-container *ngFor="let collection of allCollection">
+      <app-carousel [infosCarousel]="collection"></app-carousel>
+    </ng-container>
   </ng-container>
-  </section>
+  <ng-template #skeletonCarousel>
+    <div class="card-group">
+      <div class="skeleton-card" *ngFor="let _ of skeletons">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-text"></div>
+      </div>
+    </div>
+  </ng-template>
+</section>

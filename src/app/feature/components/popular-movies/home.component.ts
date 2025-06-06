@@ -30,6 +30,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
   public allPopular: Array<InfoCarousel> = [];
   public subscriptionLanguage!: Subscription;
   public spotlighInfos!: SpotlighInfos;
+  public skeletons = Array.from({ length: 5 });
 
   /**
    *

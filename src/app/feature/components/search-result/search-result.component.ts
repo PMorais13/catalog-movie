@@ -16,6 +16,7 @@ import { ActiveRoutes } from 'src/app/enums/routes.enum';
 export class SearchResultComponent implements OnInit {
   public results: any = [];
   public theme: ThemePalette;
+  public skeletons = Array.from({ length: 8 });
 
   constructor(
     private readonly tmbdService: TmbdService,
