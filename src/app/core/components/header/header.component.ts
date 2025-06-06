@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { StorageService } from './../../../feature/services/storage/storage.service';
 import { debounceTime, take } from 'rxjs';
 import { ActiveRoutes } from 'src/app/enums/routes.enum';
@@ -14,11 +15,17 @@ export class HeaderComponent {
   @Output() valueSeachMovie = new EventEmitter<string>();
   public routes = ActiveRoutes;
   public typeCollection = TypeCollection;
+  public isMobile = false;
 
   constructor(
     private readonly storageService: StorageService,
-    private readonly router: Router
-  ) {}
+    private readonly router: Router,
+    private readonly breakpointObserver: BreakpointObserver
+  ) {
+    this.breakpointObserver
+      .observe([Breakpoints.Handset])
+      .subscribe(result => (this.isMobile = result.matches));
+  }
 
   /**
    * altera o idioma da aplicação

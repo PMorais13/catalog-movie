@@ -1,14 +1,28 @@
-<mat-toolbar color="primary">
-  <div class="col-8">
-    <button mat-button color="basic" (click)="navigate(routes.HOME)">
-      <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home"></mat-icon>
-      Home</button>
-    <button mat-button color="basic" (click)="navigate(routes.COLLECTION, typeCollection.MOVIE)">Filmes</button>
-    <button mat-button color="basic" (click)="navigate(routes.COLLECTION, typeCollection.SERIE)">Séries</button>
-    <button mat-button color="basic" (click)="navigate(routes.HOME)" [disabled]="true">Favoritos</button>
-  </div>
-  <div class="col-4">
-    <app-aside-search (valueSeachMovie)="searching($event)"></app-aside-search>
-  </div>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over" class="app-sidenav">
+    <button mat-button (click)="navigate(routes.HOME); drawer.close()">
+      <mat-icon fontIcon="home" aria-hidden="false" aria-label="home icon"></mat-icon>
+      Home
+    </button>
+    <button mat-button (click)="navigate(routes.COLLECTION, typeCollection.MOVIE); drawer.close()">Filmes</button>
+    <button mat-button (click)="navigate(routes.COLLECTION, typeCollection.SERIE); drawer.close()">Séries</button>
+    <button mat-button disabled>Favoritos</button>
+    <app-aside-search class="drawer-search" (valueSeachMovie)="searching($event)"></app-aside-search>
+  </mat-drawer>
 
-</mat-toolbar>
+  <mat-toolbar color="primary">
+    <button mat-icon-button *ngIf="isMobile" (click)="drawer.toggle()" aria-label="toggle menu">
+      <mat-icon fontIcon="menu"></mat-icon>
+    </button>
+    <div class="nav-buttons" *ngIf="!isMobile">
+      <button mat-button color="basic" (click)="navigate(routes.HOME)">
+        <mat-icon fontIcon="home" aria-hidden="false" aria-label="home icon"></mat-icon>
+        Home</button>
+      <button mat-button color="basic" (click)="navigate(routes.COLLECTION, typeCollection.MOVIE)">Filmes</button>
+      <button mat-button color="basic" (click)="navigate(routes.COLLECTION, typeCollection.SERIE)">Séries</button>
+      <button mat-button color="basic" disabled>Favoritos</button>
+    </div>
+    <span class="spacer"></span>
+    <app-aside-search *ngIf="!isMobile" (valueSeachMovie)="searching($event)"></app-aside-search>
+  </mat-toolbar>
+</mat-drawer-container>

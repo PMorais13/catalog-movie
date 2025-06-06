@@ -1,20 +1,15 @@
 mat-toolbar {
-    height: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
 
-    :first-child {
-        height: 100%;
-    }
-
-    mat-drawer-container {
-        ::ng-deep {
-            mat-drawer-content {
-                overflow: hidden;
-                mat-drawer {
-                    div {
-                        overflow: hidden;
-                    }
-                }
-            }
-        }
-    }
+  .spacer {
+    flex: 1 1 auto;
+  }
 }
+
+.app-sidenav {
+  width: 250px;
+  padding: 1rem;
+}
+
