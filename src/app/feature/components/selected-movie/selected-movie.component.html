@@ -1,5 +1,8 @@
 <section *ngIf="spotlighInfos">
   <app-movie-spotlight [spotlighInfos]="spotlighInfos"></app-movie-spotlight>
+  <button mat-icon-button color="accent" (click)="toggleFavorite(infoMovie)">
+    <mat-icon>{{ favoritesService.isFavorite(infoMovie?.id) ? 'star' : 'star_border' }}</mat-icon>
+  </button>
   <div class="cards d-flex">
     <mat-card class="example-card col-3">
       <mat-card-header>

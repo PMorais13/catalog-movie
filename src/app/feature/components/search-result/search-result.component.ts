@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TmbdService } from '../../services/tmdb/tmdb.service';
 import { StorageService } from '../../services/storage/storage.service';
+import { FavoritesService } from '../../services/favorites/favorites.service';
 import { take } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { ThemePalette } from '@angular/material/core';
@@ -17,7 +18,12 @@ export class SearchResultComponent implements OnInit {
   public theme: ThemePalette;
   public skeletons = Array.from({ length: 8 });
 
-  constructor(private readonly tmbdService: TmbdService, private readonly storageService: StorageService, private readonly router: Router) { }
+  constructor(
+    private readonly tmbdService: TmbdService,
+    private readonly storageService: StorageService,
+    public readonly favoritesService: FavoritesService,
+    private readonly router: Router
+  ) { }
 
   /**
    * recupera a lista da pesquisa
@@ -38,6 +44,10 @@ export class SearchResultComponent implements OnInit {
   public selectMovie(id: number): void {
     this.storageService.setIdSelectedMovie = id;
     void this.router.navigate([ActiveRoutes.SELECT]);
+  }
+
+  public toggleFavorite(movie: any): void {
+    this.favoritesService.toggle(movie);
   }
 
   /**

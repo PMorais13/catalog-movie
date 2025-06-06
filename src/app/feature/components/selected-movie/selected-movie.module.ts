@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 import { SelectedMovieComponent } from './selected-movie.component';
 import { SelectedMovieRoutingModule } from './selected-movie.routing.module';
@@ -12,7 +14,9 @@ import { MovieSpotlightModule } from 'src/app/shared/movie-spotlight/movie-spotl
     CommonModule,
     SelectedMovieRoutingModule,
     MovieSpotlightModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [SelectedMovieComponent]
 })

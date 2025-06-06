@@ -2,19 +2,14 @@
   <div class="container">
     <h2 class="pt-4 ps-4">Resultado da pesquisa:</h2>
     <div class="card-group">
-      <ng-container *ngIf="results.results; else skeleton">
-        <h3 *ngIf="!results.results.length">Nenhum resultado encontrado</h3>
-        <div *ngFor="let result of results.results" class="selected-card" (click)="selectMovie(result.id)">
-          <img [src]="result.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path : './../../../assets/img/not-image.png'" />
-          <div>{{result.title}}</div>
-        </div>
-      </ng-container>
-      <ng-template #skeleton>
-        <div class="skeleton-card" *ngFor="let _ of skeletons">
-          <div class="skeleton-image"></div>
-          <div class="skeleton-text"></div>
-        </div>
-      </ng-template>
+      <h3 *ngIf="!results.results.length">Nenhum resultado encontrado</h3>
+      <div *ngFor="let result of results.results" class="selected-card">
+        <img [src]="result.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + result.backdrop_path : './../../../assets/img/not-image.png'" (click)="selectMovie(result.id)" />
+        <div (click)="selectMovie(result.id)">{{result.title}}</div>
+        <button mat-icon-button color="accent" (click)="toggleFavorite(result); $event.stopPropagation()">
+          <mat-icon>{{ favoritesService.isFavorite(result.id) ? 'star' : 'star_border' }}</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
   <mat-paginator *ngIf="results.results" [color]="'primary'"

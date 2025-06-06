@@ -20,6 +20,10 @@ const routes: Routes = [
           loadChildren: () => import ('./components/movie-collection/movie-collection.module').then(m => m.MovieCollectionModule)
       },
       {
+          path: ActiveRoutes.FAVORITES,
+          loadChildren: () => import ('./components/favorites/favorites.module').then(m => m.FavoritesModule)
+      },
+      {
         path: ActiveRoutes.SEARCH,
         loadChildren: () => import ('./components/search-result/search-result.module').then(m => m.SearchResultModule)
       }
