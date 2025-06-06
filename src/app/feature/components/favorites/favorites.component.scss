@@ -1,0 +1,49 @@
+section {
+    display: grid;
+    min-height: calc(100% - 80px);
+    align-content: space-between;
+}
+
+.container {
+    height: calc(100% + 80px);
+}
+
+.card-group {
+    display: flex;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.selected-card {
+    margin: 10px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    div {
+        width: 200px;
+    }
+}
+
+mat-paginator {
+    background-color: #673ab7;
+    font-size: large;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+@media (max-width: 570px) {
+    .card-group {
+        flex-direction: column;
+    }
+    .selected-card {
+        text-align: none!important;
+        div {
+            width: 0px;
+        }
+    }
+  }

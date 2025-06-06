@@ -5,7 +5,7 @@
       Home</button>
     <button mat-button color="basic" (click)="navigate(routes.COLLECTION, typeCollection.MOVIE)">Filmes</button>
     <button mat-button color="basic" (click)="navigate(routes.COLLECTION, typeCollection.SERIE)">Séries</button>
-    <button mat-button color="basic" (click)="navigate(routes.HOME)" [disabled]="true">Favoritos</button>
+    <button mat-button color="basic" (click)="navigate(routes.FAVORITES)">Favoritos</button>
   </div>
   <div class="col-4">
     <app-aside-search (valueSeachMovie)="searching($event)"></app-aside-search>

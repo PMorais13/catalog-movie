@@ -1,0 +1,15 @@
+<section>
+  <div class="container">
+    <h2 class="pt-4 ps-4">Filmes Favoritos</h2>
+    <div class="card-group">
+      <h3 *ngIf="!favoritesService.favorites.length">Nenhum favorito cadastrado</h3>
+      <div *ngFor="let movie of favoritesService.favorites" class="selected-card">
+        <img [src]="movie.backdrop_path ? 'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path : './../../../assets/img/not-image.png'" (click)="selectMovie(movie.id)" />
+        <div (click)="selectMovie(movie.id)">{{movie.title || movie.name}}</div>
+        <button mat-icon-button color="warn" (click)="remove(movie.id); $event.stopPropagation()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
