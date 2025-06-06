@@ -1,11 +1,12 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import './theme';
 
 html, body {
     height: 100%!important;
     margin: 0;
     padding: 0;
-    color: aliceblue;
-    background-color: rgb(59, 59, 59);
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
