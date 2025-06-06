@@ -1,4 +1,14 @@
-<section *ngIf="spotlighInfos">
-  <app-movie-spotlight [spotlighInfos]="spotlighInfos"></app-movie-spotlight>
-  <app-carousel *ngFor="let collection of allPopular" [infosCarousel]="collection"></app-carousel>
+<section>
+  <ng-container *ngIf="spotlighInfos; else skeletonHome">
+    <app-movie-spotlight [spotlighInfos]="spotlighInfos"></app-movie-spotlight>
+    <app-carousel *ngFor="let collection of allPopular" [infosCarousel]="collection"></app-carousel>
+  </ng-container>
+  <ng-template #skeletonHome>
+    <div class="card-group">
+      <div class="skeleton-card" *ngFor="let _ of skeletons">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-text"></div>
+      </div>
+    </div>
+  </ng-template>
 </section>

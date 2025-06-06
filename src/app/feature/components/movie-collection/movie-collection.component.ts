@@ -19,6 +19,7 @@ export class MovieCollectionComponent implements OnInit {
   public genrers = new FormControl(['']);
   public genrerList: Array<string> = [];
   public isLoaded = false;
+  public skeletons = Array.from({ length: 5 });
   private isMovie: boolean;
   private collectionOrigin: Array<InfoCarousel> = [];
 
