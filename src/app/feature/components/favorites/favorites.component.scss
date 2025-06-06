@@ -29,7 +29,7 @@ img {
 }
 
 mat-paginator {
-    background-color: #673ab7;
+    background-color: var(--primary-color);
     font-size: large;
     position: fixed;
     width: 100%;

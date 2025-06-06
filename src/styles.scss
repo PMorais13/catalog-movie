@@ -11,6 +11,8 @@
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
+  --primary-color: #3f51b5;
+  --accent-color: #ff4081;
 }
 
 html, body {
@@ -21,7 +23,6 @@ html, body {
     background-color: var(--background-color);
     font-family: var(--font-family-base);
     font-size: var(--font-size-base);
-    color: aliceblue;
 }
 
 .skeleton-card {
