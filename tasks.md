@@ -30,3 +30,10 @@
 
 10. **Otimizar carregamento de imagens**
     - Usar técnicas de lazy loading e imagens em diferentes resoluções.
+
+11. **Revisar e atualizar paleta de cores**
+   - Analisar a estética atual para identificar problemas de contraste e harmonia.
+   - Definir uma nova paleta principal e secundária com variações de tons.
+   - Atualizar os estilos globais e componentes para aplicar as novas cores.
+   - Verificar acessibilidade e ajustar contrastes conforme recomendações WCAG.
+   - Validar com usuários e stakeholders antes de finalizar a mudança.
