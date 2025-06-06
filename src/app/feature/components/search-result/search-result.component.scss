@@ -19,7 +19,7 @@ img {
 }
 
 .selected-card {
-    margin: 10px;
+    margin: var(--spacing-sm);
     text-align: center;
     color: white;
     cursor: pointer;
