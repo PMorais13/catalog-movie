@@ -14,3 +14,6 @@ Este projeto é um aplicativo web criado com Angular que utiliza a API do TMDB (
 
 Você pode conferir o projeto clicando no link:
 https://moviecatalog.surge.sh/home
+
+## Testes
+Para rodar os testes em ambientes sem Google Chrome, defina a variavel de ambiente CHROME_BIN apontando para o executável do Chromium.
