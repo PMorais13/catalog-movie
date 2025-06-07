@@ -4,15 +4,16 @@
 @import './theme';
 
 :root {
-  --font-family-base: 'Roboto', sans-serif;
+  --font-family-base: 'Press Start 2P', 'Roboto', sans-serif;
   --font-size-base: 16px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  --primary-color: #3f51b5;
-  --accent-color: #ff4081;
+  --primary-color: #ff3860;
+  --accent-color: #00d1b2;
+  --header-gradient: linear-gradient(90deg, var(--primary-color), var(--accent-color));
 }
 
 html, body {
@@ -21,6 +22,8 @@ html, body {
     padding: 0;
     color: var(--text-color);
     background-color: var(--background-color);
+    background-image: radial-gradient(rgba(255,255,255,0.05) 2px, transparent 2px);
+    background-size: 50px 50px;
     font-family: var(--font-family-base);
     font-size: var(--font-size-base);
 }
