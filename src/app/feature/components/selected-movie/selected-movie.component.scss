@@ -1,11 +1,11 @@
 section {
   background-color: var(--background-color);
-  color: white;
+  color: var(--text-color);
 
   .cards {
     justify-content: space-evenly;
     > mat-card {
-        background-color: rgb(66 27 195 / 45%);
+        background-color: rgba(0, 0, 0, 0.5);
       }
   }
   
